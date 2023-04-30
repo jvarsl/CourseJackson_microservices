@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: platforms-deployment
 spec:
-  replicas: 1 # amount of pods
+  replicas: 1 # amount of pods, even if deleted/crashed - while kubernetes runs it will recreate
   selector:
     matchLabels:
       app: platformservice
@@ -20,3 +20,5 @@ spec:
 # kubectl apply -f platforms-deploy.yaml
 # kubectl get deployments
 # kubectl get pods
+
+# to delete deployment: kubectl delete deployment <deployment_name>
