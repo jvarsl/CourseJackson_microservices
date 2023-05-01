@@ -21,4 +21,21 @@ spec:
 # kubectl get deployments
 # kubectl get pods
 
+# restart (pull new images): kubectl rollout restart deployment <deployment_name>
+
 # to delete deployment: kubectl delete deployment <deployment_name>
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: platforms-clusterip-service
+spec:
+  type: ClusterIP
+  selector:
+    app: platformservice
+  ports:
+  - name: platformservice
+    protocol: TCP
+    port: 80
+    targetPort: 80
